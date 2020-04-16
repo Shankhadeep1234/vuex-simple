@@ -1,44 +1,21 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import counter from './modules/counter';
+
+import actions from './actions';
+import getters from './getters';
+import mutations from './mutations';
 
 Vue.use(Vuex);
 
 export const store = new Vuex.Store({
   state: {
-    counter: 0,
+    value: 0,
   },
-  getters: {
-    doubleCounter: (state) => {
-      return state.counter * 2;
-    },
-    stringCounter: (state) => {
-      return state.counter + 'Click';
-    },
-  },
-  mutations: {
-    increment: (state) => {
-      state.counter++;
-    },
-    decrement: (state) => {
-      state.counter--;
-    },
-  },
-  actions: {
-    increment: (context) => {
-      context.commit('increment');
-    },
-    decrement: (context) => {
-      context.commit('decrement');
-    },
-    asyncIncrement: (context) => {
-      setTimeout(() => {
-        context.commit('increment');
-      }, 1000);
-    },
-    asyncDecrement: (context) => {
-      setTimeout(() => {
-        context.commit('decrement');
-      }, 1000);
-    },
+  getters,
+  mutations,
+  actions,
+  modules: {
+    counter,
   },
 });
